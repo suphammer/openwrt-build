@@ -8,3 +8,8 @@
 	url = https://github.com/suphammer/openwrt-packages.git
 	branch = master
 	ignore = all
+[submodule "openwrt/rp-n53"]
+	path = openwrt/rp-n53
+	url = https://github.com/suphammer/openwrt-rp-n53.git
+	branch = master
+	ignore = all
