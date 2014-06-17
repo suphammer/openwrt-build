@@ -21,8 +21,14 @@ endif
 
 all:
 	@echo "Please select one of the following:"
-	@echo "* make TARGET=<target> prepare"
-	@echo "* make TARGET=<target> release"
+	@echo "* make init                      - Fetches all submodules."
+	@echo "* make TARGET=<target> prepare   - Configure target configuration."
+	@echo "* make TARGET=<target> release   - Build OpenWrt for specified target."
+
+init:
+	@git submodule init
+	@git submodule update
+	@git submodule foreach git checkout master
 
 prepare:
 	@cp target/$(TARGET)/openwrt.config openwrt/$(TARGET)/.config
