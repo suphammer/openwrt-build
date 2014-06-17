@@ -1,0 +1,8 @@
+[submodule "openwrt/esr1750"]
+	path = openwrt/esr1750
+	url = https://github.com/suphammer/openwrt-esr1750.git
+	branch = master
+[submodule "packages"]
+	path = packages
+	url = https://github.com/suphammer/openwrt-packages.git
+	branch = master
