@@ -31,9 +31,10 @@ init:
 	@git submodule foreach git checkout master
 
 prepare:
-	@cp target/$(TARGET)/openwrt.config openwrt/$(TARGET)/.config
 	@cp target/$(TARGET)/feeds.conf openwrt/$(TARGET)/
 	(cd openwrt/$(TARGET) && ./scripts/feeds update -a && ./scripts/feeds install -a)
+	(cd openwrt/$(TARGET) && make defconfig < /dev/null)
+	@cat target/$(TARGET)/openwrt.config >> openwrt/$(TARGET)/.config
 	(cd openwrt/$(TARGET) && make oldconfig < /dev/null)
 
 release:
