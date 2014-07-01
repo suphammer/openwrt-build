@@ -33,9 +33,10 @@ init:
 prepare:
 	@cp target/$(TARGET)/feeds.conf openwrt/$(TARGET)/
 	(cd openwrt/$(TARGET) && ./scripts/feeds update -a && ./scripts/feeds install -a)
-	(cd openwrt/$(TARGET) && make defconfig < /dev/null)
-	@cat target/$(TARGET)/openwrt.config >> openwrt/$(TARGET)/.config
-	(cd openwrt/$(TARGET) && make oldconfig < /dev/null)
+#	(cd openwrt/$(TARGET) && make defconfig < /dev/null)
+#	@cat target/$(TARGET)/openwrt.config >> openwrt/$(TARGET)/.config
+	@cat target/$(TARGET)/openwrt.config > openwrt/$(TARGET)/.config
+	(cd openwrt/$(TARGET) && make oldconfig < /dev/null 2> /dev/null)
 
 release:
 	@date +%Y%m%d%H%M > openwrt/$(TARGET)/version
