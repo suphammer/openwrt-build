@@ -42,7 +42,7 @@ release:
 	@date +%Y%m%d%H%M > openwrt/$(TARGET)/version
 	@(cd openwrt/$(TARGET) && make -j16)
 ifeq ($(TARGET),esr1750)
-	@cp openwrt/$(TARGET)/bin/ar71xx/openwrt-ar71xx-generic-esr1750-squashfs-sysupgrade.bin $(FWDIR)/openwrt-esr1750-`cat openwrt/$(TARGET)/version`.bin
+	@dd if=openwrt/$(TARGET)/bin/ar71xx/openwrt-ar71xx-generic-esr1750-squashfs-sysupgrade.bin of=$(FWDIR)/openwrt-esr1750-`cat openwrt/$(TARGET)/version`.bin
 endif
 	@rm -f openwrt/$(TARGET)/version
 
